@@ -1,0 +1,23 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "make",
+            "type": "shell",
+            "command": "make"
+        },
+        {
+            "label": "run server",
+            "type": "shell",
+            "command": "./thread_pool_server"
+        },
+        // {
+        //     "label": "run client",
+        //     "type": "shell",
+        //     "command": "./client",
+        //     "args":["192.168.5.214","8002"]
+        // },
+    ]
+}

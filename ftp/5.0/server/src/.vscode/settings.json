@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "work_queue.h": "c",
+        "stdlib.h": "c",
+        "mysql.h": "c"
+    }
+}

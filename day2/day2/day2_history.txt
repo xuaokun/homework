@@ -1,0 +1,100 @@
+  313  cd day2
+  314  ls
+  315  cd day2
+  316  ls
+  317  vim main.c
+  318  touch file1
+  319  vin file1
+  320  vi file1
+  321  vime file1
+  322  vim file1
+  323  vim main.c
+  324  ls
+  325  vim main.c
+  326  sed "s/printf/puts/g" main.c
+  327  cat main.c
+  328  sed -i "s/printf/puts/g" main.c
+  329  cat main.c
+  330  sed -i "s/printf/puts/g" *.c
+  331  cd ~
+  332  cd bashrc
+  333  cd .bashrc
+  334  vim .bashrc
+  335  . .bashrc
+  336  find / -name std*.h
+  337  pwd
+  338  find . -name "file*"
+  339  find . -name "file?"
+  340  find . -name "file[1-5]"
+  341  find -perm 775
+  342  find -size 4
+  343  find -mmin -5
+  344  find-mmin +5
+  345  find -mmin +5
+  346  who
+  347  date
+  348  find -mtime -1
+  349  find -mtime -1 -exec ls -l {} \;
+  350  find -name "file*"|xargs ls -l 
+  351  ls
+  352  ls|wc -l
+  353  cd day2
+  354  ls|wc -l
+  355  ls
+  356  cd day2
+  357  ls
+  358  df =h
+  359  df -h
+  360  ls
+  361  du -h
+  362  du -h -max-depth=0
+  363  du --h -max-depth=0
+  364  du -h --max-depth=0
+  365  du -h --max-depth=1
+  366  du -h --max-depth=2
+  367  du -h --max-depth=3
+  368  cd ..
+  369  du -h --max-depth=1
+  370  ls
+  371  du -h --max-depth=2
+  372  ls
+  373  cat -b day2_history1.txt
+  374  find -name file1
+  375  cd ./day2/file1
+  376  cd
+  377  cd. /day2/
+  378  cd ./day2/
+  379  ls
+  380  cd day22
+  381  cd day2
+  382  ls
+  383  cat file1
+  384  cat -b file1
+  385  cat -E file1
+  386  cat -s file1
+  387  ls
+  388  echo i am cool >file11
+  389  ls
+  390  cat file11
+  391  echo i am cool >>file11
+  392  cat file11
+  393  cat main.c
+  394  vim main.c
+  395  ./main.c 
+  396  ls -l main.c
+  397  su
+  398  echo file22
+  399  ls
+  400  touch b.txt
+  401  ls
+  402  rm a.out
+  403  ls
+  404  echo file20
+  405  ls
+  406  cat >file14
+  407  cat file14
+  408  sort file14
+  409  head -2 main.c
+  410  head -n 3 main.c
+  411  tail -4 main.c
+  412  history|tail -100>day2_history.txt

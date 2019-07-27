@@ -1,0 +1,52 @@
+{
+    // 使用 IntelliSense 了解相关属性。 
+    // 悬停以查看现有属性的描述。
+    // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "debug_srv",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${fileDirname}/thread_pool_server", 
+            "preLaunchTask": "make",          //执行launch之前，会先执行setting里面的这个流程，改成相对应的
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ],
+
+            "miDebuggerPath": "/usr/bin/gdb"
+        },
+
+        {
+            "name": "debug_client",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${fileDirname}/gclient.exe",
+            "preLaunchTask": "debug_client",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ],
+            "miDebuggerPath": "/usr/bin/gdb"
+        }
+    ]
+}

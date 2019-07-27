@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "mysql.h": "c",
+        "factory.h": "c",
+        "work_queue.h": "c"
+    }
+}
