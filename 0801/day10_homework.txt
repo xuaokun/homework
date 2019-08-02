@@ -1,0 +1,131 @@
+
+继承简答题：
+	
+1. 三种继承方式对于基类成员的访问权限是怎样的？
+public继承时，对于基类的非私有成员，在派生类的内部权限保持不变；而protect继承时，在派生类中的内部访问权限都变为protected;对于private继承，在派生类内部的访问权限都变成private.
+2. 继承中有哪些内容是不能进行继承的？
+构造函数、析构函数、operator new/delete、用户重载的=运算符、友元关系
+
+3. 多基派生会产生的问题有哪些？怎样解决？
+多基继承时，如果多个基类中存在同名成员的情况，造成编译器无从判定具体要访问的哪个基类中的成员，则称为对基类成员访问的二义性问题。
+通过加作用域限定符来解决。
+4. 派生类对象之间的复制控制规则是什么？
+1、如果派生类有显式定义构造函数，而基类没有，则创建派生类的对象时，派生类相应的构造函数会被自动调用，此时都自动调用了基类缺省的无参构造函数。
+2、如果派生类没有显式定义构造函数而基类有，则基类必须拥有默认构造函数。
+3、如果派生类有构造函数，基类有默认构造函数，则创建派生类的对象时，基类的默认构造函数会自动调用，如果你想调用基类的有参构造函数，必须要在派生类构造函数的初始化列表中显示调用基类的有参构造函数。 
+4、如果派生类和基类都有构造函数，但基类没有默认的无参构造函数，即基类的构造函数均带有参数，则派生类的每一个构造函数必须在其初始化列表中显示的去调用基类的某个带参的构造函数。如果派生类的初始化列表中没有显示调用则会出错，因为基类中没有默认的构造函数。
+代码实现：
+1. 编写一个圆类Circle，该类拥有： 
+		① 1个成员变量，存放圆的半径；
+		② 两个构造方法
+	 			Circle( )              // 将半径设为0           
+	 			Circle(double  r )     //创建Circle对象时将半径初始化为r      
+		③ 三个成员方法              
+				double getArea( )      //获取圆的面积            
+				double getPerimeter( ) //获取圆的周长              
+				void  show( )          //将圆的半径、周长、面积输出到屏幕 
+#define pi 3.14159226
+#include <iostream>
+using std::cout;
+using std::endl;
+
+class Circle{
+public:
+	Circle()
+	:_r(0)
+	{}
+	Circle(double r)
+	:_r(r)
+	{}
+	double getArea(){
+		return << pi*r*r;
+	}
+	double getPerimeter( ){
+		return  2*pi*r;
+	}
+	void  show( ){          //将圆的半径、周长、面积输出到屏幕 
+		cout << _r << endl;
+		cout <<getArea() << endl;
+		cout <<getPerimeter() << endl;
+	}
+protected:
+	double _r;
+};
+2. 编写一个圆柱体类Cylinder，它继承于上面的Circle类，还拥有： 
+		① 1个成员变量，圆柱体的高；
+		② 构造方法           
+ 				Cylinder (double r, double  h) //创建Circle对象时将半径初始化为r         
+		③ 成员方法
+				double getVolume( )   //获取圆柱体的体积             
+				void  showVolume( )   //将圆柱体的体积输出到屏幕  
+			编写应用程序，创建类的对象，分别设置圆的半径、圆柱体的高，
+			计算并分别显示圆半径、圆面积、圆周长，圆柱体的体积。
+class Cylinder
+:public Circle
+{
+public:
+	Cylinder (double r, double  h)
+	:Circle(r)
+	,_high(h)
+	{}
+	double getVolume( )   //获取圆柱体的体积
+	{
+		return pi*_r*_r*_high;
+	}             
+	void  showVolume( )   //将圆柱体的体积输出到屏幕 
+	{
+		cout << getVolume() << endl;
+	} 
+private:
+	double _high;
+};
+3. 构建一个类person，包含字符串成员name（姓名），整型数据成员age（年龄），成员函数
+   display（）用来输出name和age。构造函数包含两个参数，用来对name和age初始化。
+   
+   构建一个类employee由person派生，包含department（部门），实型数据成员salary（工资）,
+   成员函数display（）用来输出职工姓名、年龄、部门、工资，其他成员根据需要自己设定。
+   
+   主函数中定义3个employee类对象，内容自己设定，将其姓名、年龄、部门、工资输出，
+   并计算他们的平均工资。
+class person(){
+public:
+	person(const char *name,int age)
+	:_name(name)
+	,_age(age)
+	{}
+	void display(){
+		cout << "name:" <<_name <<",age:" <<_age << endl;
+	}
+protected:
+	string _name;
+	int _age;
+};
+class employee
+:public person
+{
+public:
+	employee(const char *name,int age,const char *department,double salary)
+	:person(name,age)
+	,_department(department)
+	,_salary(salary)
+	{}
+	void display(){
+		cout << "name:" <<_name <<",age:" <<_age <<"department:" <<_department <<"salary:" <<_salary << endl;
+	}
+private:
+	string _department;
+	double _salary;
+};
+int main(){
+	employee e1("xiongda",1,"huawei",1000);
+	employee e2("xionger",2,"xiaomi",2000);
+	employee e3("guangtouqiang",3,"apple",3000);
+	e1.display();
+	e2.display();
+	e3.display();
+	cout << "average:" <<(e1._salary+e2._salary+e3._salary)/3.0 << endl;
+}
+4. 魔兽世界之二:装备版
+		http://cxsjsxmooc.openjudge.cn/2018t3springw5/3/
+
+   通过阅读题目，构建武士的继承体系
